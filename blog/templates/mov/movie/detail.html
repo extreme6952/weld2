@@ -1,0 +1,77 @@
+{% extends 'mov/base.html' %}
+{% block title %}
+	{{details.title}}
+{% endblock %}
+
+{% block content %}
+<header>
+	<nav>  
+		<ul class="nav justify-content-center navbar=light bg-dark">
+		<li class="nav-item">
+		  <a class="nav-link active" href="{% url 'movie:home' %}">Главная</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="https://vk.com/kaznacheev1">Vk</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="https://vk.com/kaznacheev1">Instagram</a>
+		</li>
+	
+	  </ul>
+	  </nav> 
+	  
+</header>
+
+  <section class="jumbotron text-center bg-secondary">
+    <div class="container">
+      <h1 class="text-light">{{details.title}}</h1>
+      <p class="lead text-light"></p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Telegram</a>
+              </p>
+    </div>
+  </section>
+
+	<div class="container py-5">
+		<div class="row mt-5">
+			<div class="col-10 mx-auto col-md-6 my-3">
+				
+			</div>
+		</div>
+	</div>
+	<div class="col-10 mx-auto col-md-6 my-3">
+		<div>
+			<img src="{{details.image.url}}" class="bd-placeholder-img card-img-top ">
+			<br>
+			<br>
+			<br>
+			<p class="text-justify product_text text-light text-center">{{details.description}}</p>
+            <h5 class="text-info text-center font-italic mb-4">
+                {{details.price}}$
+            </h5>
+		</div>
+	</div>
+
+	
+<div class="text-light text-center">
+	<h2>
+	{{ comments.count }} comment{{comments.count|pluralize}}
+	</h2>
+  {% for comments in comments %}
+	<div class="comment">
+	  <p class="info">
+		{{ comments.body|linebreaks }}
+		{{ comments.name }}
+		{{ comments.created }}
+	  </p>
+	</div>
+  {% empty %}
+	<p>There are no comment yet.</p>
+  {% endfor %}
+</div>
+
+{% include "mov/movie/includes/comment_form.html" %}
+
+
+  
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'mov/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form action="{% url 'movie:commentd' details.id %}" method="post" class="text-light">
+    {% csrf_token %}
+     <p class="bg-dark">{{ form|crispy }}</p>
+     <div class="text-center">
+      <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+
+     </div>
+  </form>
+{% endblock %}

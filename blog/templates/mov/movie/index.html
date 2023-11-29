@@ -1,0 +1,57 @@
+{% extends 'mov/base.html' %}
+
+{% block title %} Welder {%endblock%}
+
+
+
+
+
+
+{% block content %}
+
+<header>
+	<nav>  
+		<ul class="nav justify-content-center navbar=light bg-dark">
+		<li class="nav-item">
+		  <a class="nav-link active" href="{% url 'movie:home' %}">Главная</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="https://vk.com/kaznacheev1">Vk</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="https://vk.com/kaznacheev1">Instagram</a>
+		</li>
+	  </ul>
+	  </nav> 
+	  
+</header>
+
+<main role="main">
+
+    <section class="jumbotron text-center bg-secondary">
+      <div class="container">
+        <h1 class="text-light">Сварщик</h1>
+        <p>
+          <a href="#" class="btn btn-primary my-2">Telegram</a>
+        </p>
+      </div>
+    </section>
+  
+    <div class="album py-5 bg-dark">
+      <div class="container">
+  
+        <div class="row">
+            {% for movies in movies %}
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm bg-dark">
+              <a href="{{movies.get_absolute_url}}">
+                <img src="{{movies.image.url}}" class="bd-placeholder-img card-img-top bg-light" >
+                <div class="card-body">
+                    <p class="card-text text-primary text-center ">{{movies.title}}</p>
+                  </a>
+               
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'mov/base.html' %}
+
+{% block title %} Add comment {% endblock %}
+
+
+{% block content %}
+
+
+<section class="jumbotron text-center bg-secondary">
+    <div class="container">
+      <h1 class="text-light">Сварщик</h1>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Telegram</a>
+      </p>
+    </div>
+  </section>
+
+    {% if comment %}
+        <h2 class="text-center text-light">Ваш комментарий был добавлен</h2>
+		<p class="text-justify product_text text-light text-center"><a href="{{movie.get_absolute_url}}" class="previous">&laquo; Назад</a></p>
+    {% else %}
+        {% include 'mov/movie/includes/comment_form.html' %}
+    {% endif %}
+	    </div>
+    </div>
+{% endblock %}
